@@ -2,6 +2,18 @@
 
 如何编译自己需要的 OpenWrt 固件 [English](./README_EN.md)
 
+## 文件修改记录
+
+本分支修改了 `target/linux/ramips/image/mt7621.mk` 文件，用于兼容 JCG Q20 新版的原厂 U-Boot（commit: 943356c0）。
+
+```diff
+define Device/jcg_q20
+  $(Device/dsa-migration)
++ $(Device/uimage-lzma-loader)
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+```
+
 ## 注意
 
 1. **不要用 root 用户进行编译**
